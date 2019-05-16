@@ -12,6 +12,13 @@ This project combines [plexinc/pms-docker](https://github.com/plexinc/pms-docker
 ## Installation
 For additional configuration options please check [plexinc/pms-docker](https://github.com/plexinc/pms-docker#parameters).
 
+### Disable Plex Relay
+In case you wish to disable (i.e. remove) Plex Relay upon start-up, add the env `DISABLE_PLEX_RELAY=true` e.g.:
+
+```
+docker run -e DISABLE_PLEX_RELAY=true xeltor/plex-nvdec
+```
+
 ### Host Networking
 
 ```
