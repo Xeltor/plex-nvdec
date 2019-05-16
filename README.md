@@ -27,6 +27,7 @@ docker run \
 --name plex \
 --network=host \
 --runtime=nvidia \
+-e NVIDIA_VISIBLE_DEVICES=all \
 -e NVIDIA_DRIVER_CAPABILITIES=compute,video,utility \
 -e TZ="<timezone>" \
 -e PLEX_CLAIM="<claimToken>" \
@@ -45,6 +46,7 @@ docker run \
 --network=physical \
 --ip=<IPAddress> \
 --runtime=nvidia \
+-e NVIDIA_VISIBLE_DEVICES=all \
 -e NVIDIA_DRIVER_CAPABILITIES=compute,video,utility \
 -e TZ="<timezone>" \
 -e PLEX_CLAIM="<claimToken>" \
@@ -71,6 +73,7 @@ docker run \
 -p 32412:32412/udp \
 -p 32413:32413/udp \
 -p 32414:32414/udp \
+-e NVIDIA_VISIBLE_DEVICES=all \
 -e NVIDIA_DRIVER_CAPABILITIES=compute,video,utility \
 -e TZ="<timezone>" \
 -e PLEX_CLAIM="<claimToken>" \
