@@ -5,12 +5,34 @@ This project combines [plexinc/pms-docker](https://github.com/plexinc/pms-docker
 
 ## Requirements
 
+- Plex Pass (so you can turn on hardware support)
 - Plex Media Server must be a least version 1.15.1.791
 - You must have a NVIDIA graphics card and drivers installed with support for NVDEC (check the [NVIDIA Video Encode and Decode GPU Support Matrix](https://developer.nvidia.com/video-encode-decode-gpu-support-matrix) for a list of supported cards)
 - Nvidia runtime for Docker. (check [NVIDIA/nvidia-docker](https://github.com/NVIDIA/nvidia-docker#quickstart) for installation instructions on Linux or [Unraid Nvidia Plugin](https://forums.unraid.net/topic/77813-plugin-linuxserverio-unraid-nvidia/?tab=comments#comment-719665) for Unraid)
 
 ## Installation
+The following example will automatically forward all Plex Media Server ports and enables hardware encoding/decoding on all Nvidia GPU's.
+```
+docker run \
+-d \
+--name plex \
+--network=host \
+--runtime=nvidia \
+-e NVIDIA_VISIBLE_DEVICES=all \
+-e NVIDIA_DRIVER_CAPABILITIES=compute,video,utility \
+-e TZ="<timezone>" \
+-e PLEX_CLAIM="<claimToken>" \
+-v <path/to/plex/database>:/config \
+-v <path/to/transcode/temp>:/transcode \
+-v <path/to/media>:/data \
+xeltor/plex-nvdec
+```
 For additional configuration options please check [plexinc/pms-docker](https://github.com/plexinc/pms-docker#parameters).
+
+### How do i use a specific GPU?
+1. On your terminal type `nvidia-smi -L` this will show a list of Nvidia devices.
+2. Find the UUID of the device you want to assign. (looks something like this: GPU-a75574f4-bb42-e09a-5713-0449f0234604)
+3. Change or add the environment variable `NVIDIA_VISIBLE_DEVICES` and set it to the UUID. (e.g. `-e NVIDIA_VISIBLE_DEVICES=GPU-a75574f4-bb42-e09a-5713-0449f0234604`)
 
 ### Disable Plex Relay
 In case you wish to disable (i.e. remove) Plex Relay upon start-up, add the env `DISABLE_PLEX_RELAY=true` e.g.:
@@ -18,6 +40,8 @@ In case you wish to disable (i.e. remove) Plex Relay upon start-up, add the env 
 ```
 docker run -e DISABLE_PLEX_RELAY=true xeltor/plex-nvdec
 ```
+
+## Examples
 
 ### Host Networking
 
