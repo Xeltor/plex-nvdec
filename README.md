@@ -7,7 +7,7 @@ This project combines [plexinc/pms-docker](https://github.com/plexinc/pms-docker
 
 - Plex Media Server must be a least version 1.15.1.791
 - You must have a NVIDIA graphics card and drivers installed with support for NVDEC (check the [NVIDIA Video Encode and Decode GPU Support Matrix](https://developer.nvidia.com/video-encode-decode-gpu-support-matrix) for a list of supported cards)
-- Nvidia runtime for Docker. (check [NVIDIA/nvidia-docker](https://github.com/NVIDIA/nvidia-docker#quickstart) for installation instructions)
+- Nvidia runtime for Docker. (check [NVIDIA/nvidia-docker](https://github.com/NVIDIA/nvidia-docker#quickstart) for installation instructions on Linux or [Unraid Nvidia Plugin](https://forums.unraid.net/topic/77813-plugin-linuxserverio-unraid-nvidia/?tab=comments#comment-719665) for Unraid)
 
 ## Installation
 For additional configuration options please check [plexinc/pms-docker](https://github.com/plexinc/pms-docker#parameters).
