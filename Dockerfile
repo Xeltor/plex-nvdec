@@ -1,4 +1,4 @@
-FROM plexinc/pms-docker:plexpass
+FROM plexinc/pms-docker:latest
 
 ADD https://raw.githubusercontent.com/revr3nd/plex-nvdec/master/plex-nvdec-patch.sh /etc/cont-init.d/60-plex-nvdec-patch
 
